@@ -1,0 +1,1 @@
+export type GenericEntity<T> = T & { id: number }
