@@ -3,9 +3,14 @@ import { automovelDb } from "../../models/db"
 import { IAutomovel } from "../../models/interfaces"
 
 
+type ListFiltersType = {
+    marca: string,
+    cor: string
+}
+
 export const AutomovelController = {
-    getAutomovelList: (req: Request, res: Response<IAutomovel[]>) => {
-        const response = automovelDb.getList()
+    getAutomovelList: (req: Request<undefined, undefined, undefined, ListFiltersType>, res: Response<IAutomovel[]>) => {
+        const response = automovelDb.getList(req.query)
         res.json(response)
     },
     getAutomovelById: (req: Request<{ id: number }>, res: Response<IAutomovel>) => {

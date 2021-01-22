@@ -1,5 +1,4 @@
-import { Request, response, Response } from "express"
-import { utilizacaoAutoDb } from "../../models/db"
+import { Request, Response } from "express"
 import { IUtilizacaoAuto } from "../../models/interfaces"
 import { IUtilizacaoAutoListItem } from "./IUtilizacaoAutoListItem"
 import { UtilizacaoAutoService } from "./UtilizacaoAutoService"
@@ -9,8 +8,8 @@ export const UtilizacaoAutoController = {
         const list = UtilizacaoAutoService.listUtilizacaoAuto()
         res.status(200).json(list)
     },
-    finishUtilizacaoAuto: (req: Request<{ id: number }>, res: Response<IUtilizacaoAuto | string>) => {
-        const newItem = UtilizacaoAutoService.finishUtilizacaoAuto(+req.params.id)
+    finalizaUtilizacaoAuto: (req: Request<{ id: number }>, res: Response<IUtilizacaoAuto | string>) => {
+        const newItem = UtilizacaoAutoService.finalizaUtilizacaoAuto(+req.params.id)
 
         if (newItem)
             res.status(200).json(newItem)

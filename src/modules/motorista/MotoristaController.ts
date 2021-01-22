@@ -2,10 +2,11 @@ import { Request, Response } from "express"
 import { motoristaDb } from "../../models/db"
 import { IMotorista } from "../../models/interfaces"
 
+type ListFiltersType = { nome: string }
 
 export const MotoristaController = {
-    getMotoristaList: (req: Request, res: Response<IMotorista[]>) => {
-        const response = motoristaDb.getList()
+    getMotoristaList: (req: Request<undefined, undefined, undefined, ListFiltersType>, res: Response<IMotorista[]>) => {
+        const response = motoristaDb.getList(req.query)
         res.status(200).json(response)
     },
     getMotoristaById: (req: Request<{ id: number }>, res: Response<IMotorista>) => {

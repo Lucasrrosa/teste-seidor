@@ -1,6 +1,7 @@
 import { GenericDb } from "../common/GenericDb"
 import { IAutomovel, IMotorista, IUtilizacaoAuto } from "./interfaces"
 
+/** Instanciação das entidades para persistencia dos dados em memoria */
 
 const motoristaDb = new GenericDb<IMotorista>()
 

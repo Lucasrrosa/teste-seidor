@@ -5,6 +5,6 @@ const router = Router()
 
 router.get('/', UtilizacaoAutoController.getUtilizacaoAutoList)
 router.post('/', UtilizacaoAutoController.createUtilizacaoAuto)
-router.post('/finish/:id', UtilizacaoAutoController.finishUtilizacaoAuto)
+router.post('/finaliza/:id', UtilizacaoAutoController.finalizaUtilizacaoAuto)
 
 export const UtilizacaoAutoRouter = router

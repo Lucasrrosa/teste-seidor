@@ -1,5 +1,6 @@
 import { GenericEntity } from "./GenericEntity"
 
+/** Classe responsável por gerenciar a persistencia dos dados e as opreações de crud em uma entidade generica */
 export class GenericDb<T> {
 
     private dbData: GenericEntity<T>[]
@@ -10,8 +11,18 @@ export class GenericDb<T> {
         this.lastId = 0
     }
 
-    getList(): T[] {
-        return this.dbData
+    getList(filter?: Partial<T>): T[] {
+        /** 
+         * Retorna uma lista de acordo com o filtro se ele existir,
+         * caso não exista retorna todos os registros
+         */
+        return this.dbData.filter(item => {
+            let matchFilter = true
+            for (let k in filter) {
+                matchFilter = matchFilter && item[k] === filter[k]
+            }
+            return matchFilter
+        })
     }
 
     findById(id: number): T | undefined {

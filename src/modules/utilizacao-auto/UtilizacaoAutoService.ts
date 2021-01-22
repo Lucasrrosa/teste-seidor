@@ -33,7 +33,7 @@ export const UtilizacaoAutoService = {
             id: item.id!
         }))
     },
-    finishUtilizacaoAuto: (id: number): IUtilizacaoAuto | false => {
+    finalizaUtilizacaoAuto: (id: number): IUtilizacaoAuto | false => {
         const utilizacaoAuto = utilizacaoAutoDb.findById(id)
         if (utilizacaoAuto) {
             utilizacaoAuto.dataTermino = new Date()
